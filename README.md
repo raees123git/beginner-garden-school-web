@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Beginner Garden School & Academy
 
-## Getting Started
+A bright, welcoming school website built with Next.js App Router, TypeScript,
+Tailwind CSS, Motion for React, and Lucide React.
 
-First, run the development server:
+## Development
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Run `npm run dev` and open http://localhost:3000.
+- Run `npm run lint`, `npx tsc --noEmit`, and `npm run build` to verify changes.
+- Run `npm start` after a successful build to preview production behavior.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The project uses the installed Next.js 16 documentation in
+`node_modules/next/dist/docs`. Read relevant guides before changing framework APIs.
+Google Fonts are self-hosted by `next/font`; a first build requires network access
+for font downloads. Visitors do not make Google Fonts requests.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Current scope
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The foundation and homepage are implemented. School life and Admissions & contact
+are minimal navigable placeholders. A full gallery, inquiry form, contact actions,
+and interactive uniform viewer are reserved for later approved phases.
 
-## Learn More
+The homepage includes the open-book hero, a student-activities photo carousel, learning introduction,
+principal section, gallery preview, admissions invitation, and shared navigation/footer.
+Abstract artwork is labeled as temporary. No school people, statistics, admissions
+requirements, contact details, or uniform designs have been invented.
 
-To learn more about Next.js, take a look at the following resources:
+## Content and assets
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/content/school.ts`: identity, navigation, and the nullable principal message.
+- `src/content/gallery.ts`: typed gallery photographs; publish only approved entries.
+- `src/content/student-activities.ts`: the 14 supplied activity photographs and descriptive album captions.
+- `src/content/uniforms.ts`: future uniform assets, with optional real GLB/GLTF URLs.
+- `src/types/content.ts`: shared content contracts.
+- `public/images/school-badge.jpeg`: unchanged official badge.
+- `src/app/globals.css`: semantic palette, layout, type, spacing, and motion tokens.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Use real, school-approved copy and photographs. The principal section accepts her
+name, title, paragraphs, and portrait together. Gallery entries require dimensions,
+alt text, a caption, category, and publication approval. Obtain appropriate permission
+before publishing identifiable children. The original badge must remain unchanged.
 
-## Deploy on Vercel
+## Accessibility and interaction
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The layout supports small phones, tablets, and desktops. Navigation uses native
+links and a progressively enhanced disclosure menu, with active-page indication,
+Escape dismissal, and focus handling. Content is visible without JavaScript. Motion
+is limited to the hero and selected section reveals; reduced motion is respected.
+The image preview uses Next.js image optimization and lazy loading below the fold.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Read `AGENTS.md` and `design-system/bgs/MASTER.md` for approved project guidance.

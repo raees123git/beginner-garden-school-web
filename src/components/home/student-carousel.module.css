@@ -1,0 +1,226 @@
+/* A school album: a generous photograph, angled memories, and a contact strip. */
+.student-activities {
+  background: var(--white);
+  overflow: clip;
+  padding-bottom: 72px;
+}
+.activities-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+  margin-bottom: 32px;
+}
+.activities-intro {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.activities-intro > span {
+  width: 22px;
+  height: 2px;
+  background: var(--green);
+}
+.activities-heading h2 {
+  font-size: clamp(36px, 4.1vw, 56px);
+}
+.activities-description {
+  max-width: 330px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-bottom: 4px;
+}
+.student-carousel { position: relative; min-width: 0; }
+.student-carousel:focus-visible { outline-offset: 10px; border-radius: 24px; }
+.album-stage {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: 610px;
+  padding-block: 40px 24px;
+}
+.album-orbit {
+  position: absolute;
+  z-index: -1;
+  inset: 78px 10px 45px;
+  border-radius: 50%;
+  background: var(--sky);
+  transform: rotate(-5deg);
+}
+.album-orbit::after {
+  content: "";
+  position: absolute;
+  inset: -22px 40px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  transform: rotate(10deg);
+}
+.album-note {
+  position: absolute;
+  left: 28px;
+  top: 18px;
+  font-family: var(--font-display), Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+  color: var(--green);
+  transform: rotate(-9deg);
+}
+.album-star {
+  position: absolute;
+  right: 76px;
+  top: 8px;
+  color: var(--green);
+  transform: rotate(8deg);
+}
+.album-main {
+  position: relative;
+  z-index: 3;
+  width: 66%;
+  min-width: 0;
+  padding: 12px 12px 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 24px 56px rgb(18 59 86 / 0.12), 0 3px 8px rgb(18 59 86 / 0.04);
+  touch-action: pan-y pinch-zoom;
+  user-select: none;
+  cursor: grab;
+}
+.album-main:active { cursor: grabbing; }
+.album-tape {
+  position: absolute;
+  z-index: 4;
+  top: -14px;
+  left: calc(50% - 42px);
+  height: 28px;
+  width: 84px;
+  background: var(--leaf);
+  opacity: 0.8;
+  transform: rotate(-5deg);
+  clip-path: polygon(3% 0, 98% 5%, 95% 100%, 0 93%);
+  pointer-events: none;
+}
+.album-slide { width: 100%; }
+.album-image-wrap {
+  position: relative;
+  height: 450px;
+  overflow: hidden;
+  border-radius: 11px;
+  background: var(--paper);
+}
+.album-image-wrap img { object-fit: contain; object-position: center; }
+.album-caption {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 76px;
+  padding: 16px 12px;
+}
+.album-photo-number {
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  border-right: 1px solid var(--border);
+  padding-right: 18px;
+}
+.album-caption h3 { font-size: 22px; line-height: 1.25; }
+.album-caption-mark { margin-left: auto; color: var(--green); display: flex; }
+.album-preview {
+  position: absolute;
+  top: 150px;
+  width: 24%;
+  height: 345px;
+  padding: 9px 9px 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgb(18 59 86 / 0.08);
+  transition: transform 350ms var(--ease-out), box-shadow 350ms var(--ease-out), border-color var(--duration-ui);
+}
+.album-preview--previous { left: 5px; transform: rotate(-9deg); }
+.album-preview--next { right: 5px; transform: rotate(9deg); }
+.album-preview-image { position: relative; height: calc(100% - 46px); width: 100%; overflow: hidden; background: var(--paper); border-radius: 7px; }
+.album-preview-image img { object-fit: contain; object-position: center; }
+.album-preview > span { min-height: 46px; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-inline: 6px; font-size: 13px; color: var(--muted); }
+.album-preview:hover { border-color: var(--blue); box-shadow: 0 18px 32px rgb(18 59 86 / 0.12); }
+.album-preview--previous:hover { transform: rotate(-6deg) translateX(-6px); }
+.album-preview--next:hover { transform: rotate(6deg) translateX(6px); }
+.album-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 12px; padding-block: 12px 20px; }
+.album-browse { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; }
+.album-controls { display: flex; align-items: center; gap: 16px; }
+.album-arrow { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid var(--border); border-radius: 50%; color: var(--ink); background: var(--white); }
+.album-arrow:hover { background: var(--green); border-color: var(--green); color: var(--white); }
+.album-arrow:active { background: var(--green-hover); }
+.album-position { min-width: 66px; display: flex; justify-content: center; gap: 9px; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.album-position > span { color: var(--muted); font-weight: 400; }
+.album-thumbnails { position: relative; display: flex; gap: 10px; padding: 8px 4px 14px; overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--blue) var(--paper); overscroll-behavior-inline: contain; scroll-padding-inline: 6px; }
+.album-thumbnail { position: relative; flex: 0 0 76px; height: 76px; padding: 3px; border: 2px solid transparent; border-radius: 12px; background: var(--paper); opacity: 0.7; transition: opacity var(--duration-ui), border-color var(--duration-ui); }
+.album-thumbnail:hover { opacity: 1; }
+.album-thumbnail[aria-current="true"] { border-color: var(--green); opacity: 1; }
+.album-thumbnail img { height: 100%; width: 100%; object-fit: contain; object-position: center; border-radius: 7px; }
+.album-thumbnail-number { position: absolute; bottom: 5px; right: 5px; padding: 1px 4px; background: var(--white); color: var(--ink); border-radius: 4px; font-size: 11px; font-weight: 600; line-height: 1.4; }
+.album-instructions { max-width: 640px; margin-left: auto; font-size: 13px; color: var(--muted); margin-top: 12px; text-align: right; }
+@media (max-width: 1100px) {
+  .album-stage { min-height: 540px; }
+  .album-image-wrap { height: 390px; }
+  .album-preview { height: 290px; top: 145px; }
+  .album-caption h3 { font-size: 20px; }
+  .album-note { left: 16px; }
+  .album-star { right: 36px; }
+}
+@media (max-width: 767px) {
+  .student-activities { padding-bottom: 56px; }
+  .activities-heading { display: block; margin-bottom: 20px; }
+  .activities-description { max-width: 440px; margin-top: 20px; }
+  .album-stage { min-height: 0; padding-block: 36px 24px; }
+  .album-main { width: 82%; padding: 9px 9px 0; border-radius: 16px; }
+  .album-image-wrap { height: 380px; }
+  .album-preview { width: 28%; height: 270px; top: 110px; padding: 6px; }
+  .album-preview > span { display: none; }
+  .album-preview-image { height: 100%; }
+  .album-preview--previous { left: -8px; }
+  .album-preview--next { right: -8px; }
+  .album-note { display: none; }
+  .album-star { right: 0; top: 0; }
+  .album-orbit { inset: 58px -12px 30px; }
+  .album-caption { min-height: 72px; padding-inline: 8px; gap: 12px; }
+  .album-photo-number { padding-right: 12px; }
+  .album-caption h3 { font-size: 19px; }
+  .album-caption-mark { display: none; }
+  .album-toolbar { margin-top: 0; }
+  .album-browse { font-size: 14px; }
+  .album-controls { gap: 8px; }
+  .album-arrow { height: 44px; width: 44px; }
+  .album-position { min-width: 58px; font-size: 14px; gap: 6px; }
+  .album-thumbnail { flex-basis: 64px; height: 66px; }
+  .album-thumbnails { gap: 8px; }
+}
+@media (max-width: 480px) {
+  .album-main { width: 89%; }
+  .album-image-wrap { height: 320px; }
+  .album-preview { width: 30%; height: 230px; top: 100px; }
+  .album-preview--previous { left: -12px; }
+  .album-preview--next { right: -12px; }
+  .album-caption { min-height: 74px; gap: 10px; padding: 12px 4px; }
+  .album-caption h3 { font-size: 18px; }
+  .album-photo-number { padding-right: 10px; }
+  .album-toolbar { flex-wrap: wrap; gap: 12px; }
+  .album-controls { margin-left: auto; }
+  .album-browse { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .album-preview { transition: none; }
+  .album-preview--previous:hover { transform: rotate(-9deg); }
+  .album-preview--next:hover { transform: rotate(9deg); }
+}
+
+.album-noscript { margin-top: 16px; color: var(--muted); font-size: 15px; }

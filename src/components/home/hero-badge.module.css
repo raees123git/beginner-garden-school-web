@@ -1,0 +1,49 @@
+.figure {
+  min-width: 0;
+  width: 100%;
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.entrance,
+.surface {
+  width: 100%;
+  transform-origin: 50% 48%;
+}
+
+.artwork {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.schoolName {
+  font-family: var(--font-display), Arial, sans-serif;
+  font-size: 27px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.initials {
+  font-family: var(--font-display), Arial, sans-serif;
+  font-size: 31px;
+  font-weight: 650;
+  letter-spacing: -1.5px;
+}
+
+.motto {
+  font-family: var(--font-display), Arial, sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+
+@media (max-width: 767px) {
+  .figure { max-width: 520px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entrance,
+  .surface { transform: none !important; }
+}
