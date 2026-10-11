@@ -1,0 +1,124 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  background: var(--paper);
+}
+
+.heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-7);
+}
+
+.introduction { min-width: 0; max-width: 620px; }
+.introduction p { margin-top: var(--space-4); color: var(--muted); font-size: 19px; max-width: 540px; }
+.explore { flex-shrink: 0; margin-bottom: var(--space-1); color: var(--green); }
+
+/* An album spread: a generous landscape opposite two staggered photographs.
+   Natural image ratios keep every original subject in view at every width. */
+.gallery {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  grid-template-areas: "feature portrait" "feature group";
+  align-items: start;
+  gap: var(--space-6) var(--space-7);
+  position: relative;
+}
+
+.gallery::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 9%;
+  width: 64%;
+  height: 80%;
+  background: var(--sky);
+  border-radius: var(--radius-feature) 100px var(--radius-feature) var(--radius-feature);
+}
+
+.photo {
+  min-width: 0;
+  position: relative;
+  padding: var(--space-2);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius-image) + var(--space-2));
+  box-shadow: var(--shadow-photo);
+}
+
+.photo:first-child {
+  grid-area: feature;
+  align-self: center;
+  padding: var(--space-3);
+  margin: var(--space-5) 0 var(--space-5) var(--space-5);
+}
+
+.photo:nth-child(2) { grid-area: portrait; width: 66%; justify-self: end; }
+.photo:nth-child(3) { grid-area: group; margin-right: var(--space-4); }
+.imageWindow { overflow: hidden; border-radius: var(--radius-image); background: var(--mint); position: relative; }
+.imageWindow img { width: 100%; height: auto; transition: transform 550ms var(--ease-out); }
+
+.imageWindow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 550ms var(--ease-out);
+}
+
+.photo figcaption {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-2) var(--space-1);
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.photo figcaption > span { width: 16px; height: 2px; flex-shrink: 0; border-radius: 2px; background: var(--blue); }
+.photo:first-child figcaption { font-family: var(--font-display), Arial, sans-serif; font-size: 19px; padding-block: var(--space-4) var(--space-2); }
+.photo:nth-child(2) figcaption > span { background: var(--green); }
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .photo:hover .imageWindow img { transform: scale(1.015); }
+  .photo:hover .imageWindow::after { opacity: 0.025; }
+}
+
+@media (max-width: 1100px) {
+  .gallery { gap: var(--space-5); }
+  .photo:first-child { margin-left: var(--space-3); }
+  .photo:nth-child(2) { width: 72%; }
+  .photo:nth-child(3) { margin-right: 0; }
+}
+
+@media (max-width: 767px) {
+  .heading { align-items: flex-start; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-6); }
+  .introduction p { font-size: 18px; }
+  .gallery { column-gap: var(--space-4); }
+  .photo:first-child { margin-left: 0; padding: var(--space-2); }
+  .photo:nth-child(2) { width: 88%; }
+  .photo figcaption { font-size: 14px; gap: 6px; padding-inline: var(--space-1); }
+  .photo figcaption > span { width: 10px; }
+  .photo:first-child figcaption { font-size: 17px; }
+}
+
+@media (max-width: 639px) {
+  .gallery { grid-template-columns: 1fr; grid-template-areas: "feature" "portrait" "group"; gap: var(--space-5); }
+  .gallery::before { width: 100%; height: 83%; top: 5%; border-radius: var(--radius-feature); }
+  .photo:first-child { margin: 0; }
+  .photo:nth-child(2) { width: 80%; margin-right: var(--space-3); }
+  .photo:nth-child(3) { width: 92%; }
+  .photo figcaption { font-size: 15px; padding: var(--space-3) var(--space-2) var(--space-1); }
+  .photo figcaption > span { width: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .imageWindow img, .imageWindow::after { transition: none; }
+}

@@ -1,0 +1,49 @@
+.page { background: var(--white); }
+.hero { background: var(--paper); }
+.headline { max-width: 650px; font-size: clamp(46px, 5.5vw, 78px); }
+.bookComposition {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--border);
+}
+.bookArt { width: 40%; height: auto; flex-shrink: 0; }
+.bookCaption { min-width: 0; }
+.contact { padding-block: var(--section-space) 0; scroll-margin-top: 32px; }
+.callCard, .emailCard, .visitCard { min-width: 0; padding: 28px; border-radius: var(--radius-image); }
+.callCard { display: flex; flex-direction: column; align-items: flex-start; background: var(--green); color: var(--white); }
+.callIcon { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid var(--leaf); border-radius: 50%; color: var(--leaf); }
+.phoneNumber { font-family: var(--font-display), Arial, sans-serif; font-size: clamp(31px, 3.4vw, 48px); font-weight: 550; letter-spacing: -0.035em; line-height: 1.15; white-space: nowrap; }
+.callAction { margin-top: auto; }
+.callCard a:focus-visible { outline-color: var(--white); }
+.emailCard { background: var(--sky); }
+.emailAddress { margin-top: 20px; font-size: clamp(19px, 2vw, 26px); line-height: 1.4; overflow-wrap: anywhere; }
+.visitCard { background: var(--mint); }
+.emailCard a:hover, .visitCard a:hover { color: var(--blue-hover); }
+.location { margin-top: var(--section-space); }
+.addressPanel { padding: 28px; background: var(--paper); border-left: 3px solid var(--blue); border-radius: 0 var(--radius-image) var(--radius-image) 0; min-width: 0; }
+.addressPanel a { max-width: 100%; }
+
+@media (min-width: 768px) {
+  .bookComposition { flex-direction: column; gap: 0; padding: 28px 0; border: 0; text-align: center; }
+  .bookArt { width: 100%; max-width: 400px; }
+  .bookCaption p { margin-inline: auto; }
+  .bookCaption { padding-top: 10px; }
+  .callCard, .emailCard, .visitCard, .addressPanel { padding: 32px; }
+}
+
+@media (min-width: 1100px) {
+  .callCard { padding: 40px; }
+  .emailCard, .visitCard { padding: 32px 40px; }
+  .addressPanel { padding: 40px; }
+}
+
+@media (max-width: 374px) {
+  .callCard, .emailCard, .visitCard, .addressPanel { padding: 22px; }
+  .phoneNumber { font-size: 30px; }
+  .bookArt { width: 34%; }
+  .bookCaption > p:first-child { font-size: 24px; }
+  .addressPanel a { gap: 12px; padding-inline: 16px; font-size: 16px; }
+}

@@ -33,6 +33,7 @@
   --section-space: 104px;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-ui: 200ms;
+  --shadow-photo: 0 8px 18px rgb(18 59 86 / 0.035), 0 24px 56px -28px rgb(18 59 86 / 0.2);
 }
 
 @theme inline {
@@ -130,18 +131,6 @@ p { text-wrap: pretty; }
 .placeholder-caption { position: absolute; left: 16px; right: 16px; bottom: 16px; width: fit-content; max-width: calc(100% - 32px); display: flex; align-items: center; gap: 8px; border-radius: 8px; padding: 8px 12px; background: var(--white); color: var(--muted); font-size: 13px; line-height: 1.4; }
 .small-dot { height: 7px; width: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
 
-/* Preview only; the full gallery belongs to a later phase. */
-.section-heading-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 36px; }
-.section-heading-row p { color: var(--muted); margin-top: 12px; }
-.section-heading-row > .text-link { flex-shrink: 0; }
-.gallery-preview { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 20px; align-items: start; }
-.gallery-preview > :first-child { height: 338px; }
-.gallery-preview > :nth-child(2) { height: 290px; margin-top: 48px; }
-.gallery-preview > :nth-child(3) { height: 290px; }
-.preview-photo { overflow: hidden; border-radius: var(--radius-image); position: relative; }
-.preview-photo img { height: 100%; width: 100%; object-fit: cover; }
-.preview-photo figcaption { position: absolute; inset: auto 12px 12px; background: var(--white); border-radius: 8px; font-size: 14px; padding: 8px 12px; }
-.gallery-disclosure { font-size: 14px; color: var(--muted); margin-top: 24px; max-width: 630px; }
 .admissions-section { padding-bottom: var(--section-space); }
 .admissions-callout { position: relative; isolation: isolate; display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; background: var(--green); color: var(--white); border-radius: var(--radius-feature); padding: 64px 56px; overflow: hidden; }
 .admissions-symbol { align-self: start; margin-top: 8px; color: var(--leaf); }
@@ -192,8 +181,6 @@ p { text-wrap: pretty; }
   .admissions-symbol { display: none; }
   .admissions-callout { grid-template-columns: 1fr auto; }
   .footer-top { gap: 48px; }
-  .gallery-preview { gap: 16px; }
-  .gallery-preview .placeholder-caption { font-size: 12px; padding: 8px; left: 12px; right: 12px; max-width: calc(100% - 24px); }
 }
 @media (max-width: 900px) {
   .desktop-nav { gap: 20px; }
@@ -210,10 +197,6 @@ p { text-wrap: pretty; }
   .hero-actions { align-items: flex-start; flex-direction: column; }
   .hero-discover { margin-top: 28px; }
   .lead { font-size: 21px; }
-  .gallery-preview { grid-template-columns: 1.2fr 1fr; }
-  .gallery-preview > :first-child { height: 320px; }
-  .gallery-preview > :nth-child(2) { margin-top: 32px; height: 288px; }
-  .gallery-preview > .visual-placeholder:nth-child(3) { display: none; }
   .footer-top { grid-template-columns: 1.2fr 1fr; gap: 32px; }
   .footer-motto { grid-column: 1 / -1; padding-top: 0; display: flex; align-items: baseline; gap: 16px; }
   .footer-motto p { margin-top: 0; }
@@ -245,10 +228,6 @@ p { text-wrap: pretty; }
   .hero-footnote { padding-block: 18px; }
   .hero-footnote p { font-size: 18px; gap: 9px; }
   .hero-footnote > span { font-size: 13px; max-width: 150px; text-align: right; }
-  .section-heading-row { display: block; margin-bottom: 28px; }
-  .section-heading-row > .text-link { margin-top: 16px; }
-  .gallery-preview > :first-child { height: 280px; }
-  .gallery-preview > :nth-child(2) { height: 248px; }
   .admissions-callout { grid-template-columns: 1fr; padding: 40px 28px; gap: 28px; border-radius: 24px; }
   .admissions-copy h2 { font-size: 36px; }
   .admissions-copy p { font-size: 17px; margin-top: 18px; }
@@ -275,11 +254,6 @@ p { text-wrap: pretty; }
   .hero-footnote > span { max-width: 122px; }
   .hero-footnote p { font-size: 17px; }
   .hero-footnote svg { width: 19px; }
-  .gallery-preview { grid-template-columns: 1fr; gap: 16px; }
-  .gallery-preview > :first-child { height: 260px; }
-  .gallery-preview > :nth-child(2) { height: 210px; margin-top: 0; }
-  .gallery-preview > :nth-child(3) { display: none; }
-  .gallery-disclosure { font-size: 13px; margin-top: 20px; }
   .admissions-callout { padding: 36px 24px; }
   .admissions-copy h2 { font-size: 33px; }
   .action-link { font-size: 16px; gap: 16px; }

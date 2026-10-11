@@ -1,0 +1,56 @@
+/* Only School Life owns these selectors. Shared tokens and homepage stay untouched. */
+.school-life-page { background: var(--paper); }
+.school-life-intro h1 { font-size: clamp(48px, 8vw, 88px); max-width: 700px; }
+.school-life-intro { position: relative; }
+.life-cover { position: relative; isolation: isolate; }
+.life-cover::before { content: ""; position: absolute; z-index: -1; inset: 20px -8px 24px 8px; background: var(--sky); border-radius: 24px 24px 56px 24px; }
+.school-life-album { padding-bottom: var(--section-space); }
+.school-life-album[data-filter="learning"] .life-photo:not([data-category="learning"]),
+.school-life-album[data-filter="play"] .life-photo:not([data-category="play"]),
+.school-life-album[data-filter="celebrations"] .life-photo:not([data-category="celebrations"]),
+.school-life-album[data-filter="together"] .life-photo:not([data-category="together"]) { display: none; }
+.life-filter:active { background: var(--sky); color: var(--ink); }
+.life-filter { transition: color var(--duration-ui), background-color var(--duration-ui), border-color var(--duration-ui); }
+.life-photo-spread { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 32px 16px; }
+.life-photo { min-width: 0; width: 100%; }
+.life-photo:nth-child(3n+2) { width: 92%; justify-self: end; }
+.life-photo[data-featured] { grid-column: 1 / -1; width: 100%; justify-self: center; }
+.life-photo[data-featured] .life-photo-window { border-radius: 24px 24px 48px 24px; }
+.life-photo-window { box-shadow: var(--shadow-photo); }
+.life-photo-window img { width: 100%; height: auto; transition: transform 400ms var(--ease-out); }
+.life-photo-link:focus-visible { outline-offset: 6px; }
+.life-expand { transition: color var(--duration-ui), background-color var(--duration-ui), opacity var(--duration-ui); }
+.life-photo[data-featured] figcaption { font-size: 18px; font-family: var(--font-display), Arial, sans-serif; }
+.life-viewer { position: fixed; inset: 0; width: 100%; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; background: var(--ink); color: var(--white); overscroll-behavior: contain; }
+.life-viewer::backdrop { background: var(--ink); }
+.life-viewer-shell { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 16px; height: 100%; padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
+.life-viewer-stage { position: relative; min-height: 0; min-width: 0; touch-action: pan-y pinch-zoom; user-select: none; }
+.life-viewer-control { display: inline-flex; align-items: center; justify-content: center; min-width: 48px; min-height: 48px; padding: 8px; border: 1px solid var(--border); border-radius: 14px; color: var(--white); background: transparent; }
+.life-viewer-control:hover { color: var(--ink); background: var(--white); }
+.life-viewer-control:active { color: var(--ink); background: var(--sky); }
+.life-viewer-control:focus-visible, .life-viewer a:focus-visible { outline-color: var(--leaf); outline-offset: 4px; }
+.life-viewer-control:disabled { opacity: 0.5; cursor: default; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .life-photo-link:hover img { transform: scale(1.015); }
+  .life-photo-link:hover .life-expand { background: var(--green); color: var(--white); }
+}
+@media (min-width: 768px) {
+  .life-photo-spread { grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: 64px 48px; }
+  .life-photo:nth-child(3n+2) { width: 84%; }
+  .life-photo:nth-child(3n) { width: 94%; }
+  .life-photo[data-featured] { width: min(100%, 1000px); margin-block: 16px; }
+  .life-photo[data-featured]:nth-child(odd) { justify-self: start; }
+  .life-photo[data-featured]:nth-child(even) { justify-self: end; }
+  .life-cover::before { inset: 24px -16px 24px 24px; }
+  .life-photo[data-featured] figcaption { font-size: 23px; margin-top: 16px; }
+  .life-viewer-shell { gap: 20px; padding: 24px 40px; max-width: 1600px; margin-inline: auto; }
+}
+@media (max-height: 480px) and (orientation: landscape) {
+  .life-viewer-shell { gap: 8px; padding-block: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-bottom)); }
+  .life-viewer-shell > :last-child { flex-direction: row; align-items: center; justify-content: space-between; }
+  .life-viewer-shell > :last-child > :last-child { gap: 12px; }
+  .life-viewer-shell > :last-child > :last-child > span { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .life-photo-window img, .life-expand, .life-filter { transition: none; }
+}

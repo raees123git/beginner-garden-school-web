@@ -1,16 +1,13 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, BookOpen, HeartHandshake, MoveDown } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { ActionLink } from "@/components/ui/action-link";
-import { Reveal } from "@/components/ui/reveal";
-import { VisualPlaceholder } from "@/components/ui/visual-placeholder";
 import { school } from "@/content/school";
-import { schoolPhotos } from "@/content/gallery";
 import { HeroBadge } from "./hero-badge";
 
 export { PrincipalSection } from "./principal-section";
 export { LearningSection } from "./learning-section";
+export { GalleryPreview } from "./gallery-preview";
 
 export function Hero() {
   return <section className="hero" aria-labelledby="hero-heading">
@@ -26,17 +23,6 @@ export function Hero() {
     </Container>
     <Container><div className="hero-footnote"><p><BookOpen size={21} aria-hidden="true" />{school.motto}</p><span>A beginning full of possibility.</span></div></Container>
   </section>;
-}
-
-export function GalleryPreview() {
-  const photos = schoolPhotos.filter(photo => photo.approvedForPublication).slice(0, 3);
-  return <section className="section gallery-section" aria-labelledby="gallery-heading"><Container>
-    <div className="section-heading-row"><div><h2 id="gallery-heading">A glimpse of BGS</h2><p>The moments that will tell our school’s story.</p></div><Link href="/school-life" className="text-link">Explore school life<ArrowUpRight size={18} aria-hidden="true" /></Link></div>
-    <Reveal className="gallery-preview">
-      {photos.length ? photos.map(photo => <figure key={photo.id} className="preview-photo"><Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} sizes="(max-width: 639px) 90vw, (max-width: 1023px) 50vw, 40vw" /><figcaption>{photo.caption}</figcaption></figure>) : <><VisualPlaceholder label="School photography to follow" tone="green" variant="leaves" /><VisualPlaceholder label="School photography to follow" tone="blue" variant="arch" /><VisualPlaceholder label="School photography to follow" tone="soft" variant="pages" /></>}
-    </Reveal>
-    {!photos.length && <p className="gallery-disclosure">These are illustrative placeholders. Real school photographs will appear here once approved for publication.</p>}
-  </Container></section>;
 }
 
 export function AdmissionsCallout() {
